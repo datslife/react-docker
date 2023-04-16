@@ -8,4 +8,5 @@ jobs:
     machine: true
     resource_class: datslife/circleci
     steps:
-      - run1: echo "Hi I'm on Runners! 111"
+      - run: echo "Hi I'm on Runners! 111"
+      - run: ech
