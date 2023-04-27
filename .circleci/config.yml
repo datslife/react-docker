@@ -21,7 +21,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm run build
-            - run: echo "Thanh cong roi moi nguoi oi!!!+111"
+            - run: echo "Thanh cong roi moi nguoi oi!!!+222"
 
 workflows:
   build-and-deploy:
