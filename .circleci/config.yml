@@ -1,11 +1,32 @@
 version: 2.1
-workflows:
-  testing:
-    jobs:
-      - runner-test
+# workflows:
+#   testing:
+#     jobs:
+#       - runner-test
+# jobs:
+#   runner-test:
+#     machine: true
+#     resource_class: datslife/circleci
+#     steps:
+#       - run: echo "Hi I'm on Runners!444"
+orbs:
+  node: circleci/node@1.1.6
 jobs:
-  runner-test:
-    machine: true
-    resource_class: datslife/circleci
+  build-and-deploy:
+    executor:
+      name: node/default
     steps:
-      - run: echo "Hi I'm on Runners!444"
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm run build
+            - run: echo "Thanh cong roi moi nguoi oi!!!"
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build-and-deploy:
+          filters:
+            branches:
+              only: master # only deploy on the master branch琀
